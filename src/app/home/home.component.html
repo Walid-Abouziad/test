@@ -1,0 +1,131 @@
+<!-- binding (DOM ) -->
+
+<!-- one way dat binding  -->
+<!-- data interpolation {{}}-->
+<!-- propert binding[] -->
+<!-- event pinding () -->
+<!-- class pinding -->
+<!-- style pinding -->
+
+
+<h3>Your Name Is {{userName}}</h3>
+<h4>Your Age Is {{userAge +2}}</h4>
+
+<hr>
+
+<!-- we will change the file pass during upload -->
+<!-- <img src="./assets/images/work-1.jpg" alt=""> -->
+<img [src]="imgSource" [alt]="userName" [width]="imgWidth">
+<br>
+<br>
+
+<!-- two way dat binding  (you must add  FormsModule inside imports in app module)-->
+<section class="contact p-4 border bg-warning">
+    <input type="text" class="form-control" [(ngModel)]="searchTerm" />
+    <h3>{{searchTerm}}</h3>
+
+</section>
+
+
+<!-- directive strucute -->
+<!-- - *ngFor to use for inside HTML (will be insted of display data)>  -->
+<!-- - *ngIf to use IF inside HTML> -->
+<!-- - ngSwitch -->
+<button class="btn btn-info" (click)="addFriend()">Add Friend</button>
+<br>
+<br>
+
+<h1 *ngIf="onSale==true">Hello Hamadaaaaa</h1>
+<section class="about p-4 borde bg-info">
+ 
+
+
+    <!-- <h3>{{user.name}}</h3>
+    <h3>{{user.age}}</h3>
+    <h3>{{user.salary}}</h3> -->
+    <!-- <table>thead>tr>th*3^^tbody>tr>td*3 -->
+    <ng-template #msgTable>
+        <div>
+            <h2>Not Found Data</h2>
+        </div>
+    </ng-template>
+    
+    <table class="table" *ngIf="users.length>0 ; else msgTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users ; index as i">
+                <td>{{i+1}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.age}}</td>
+                <td>{{user.salary}}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    <ul>
+        <li *ngFor=" let sampleName of friends ">{{ sampleName }}</li>
+    </ul>
+
+
+
+
+
+</section>
+
+
+
+
+<section class="home p-4 border bg-warning">
+    <!-- <h1 [style.background-color] ="onSale == true ? 'green' : 'red'">Hello Routeeee</h1> -->
+    <!-- same as above with different syntax -->
+    <h1 [style] ="onSale == true ? 'background-color:green' : 'background-color:red'">Hello Routeeee</h1>
+    <br>
+    <!-- <h1 class="text-center" [class.bg-danger]="onSale == true">Hello Menissssy</h1> -->
+    <!-- istead of above we use  -->
+     <h1 class="text-center" [class]="onSale == true ? 'bg-danger' : 'bg-info'">Hello Menissssy</h1>
+    <br>
+    <h2>Hello Home Component</h2>
+    <button class="btn btn-danger" (mouseenter)="sayHello()" (click)="welcome()">Click Me</button>
+    <br>
+    <br>
+    <input type="text" class="form-control" (keydown.i)="work()" (keydown.shift.w)="work()">
+    <br>
+    <input type="text" class="form-control" (keydown.r)="eat($event)">
+</section>
+<br>
+<br>
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4" *ngFor="let product of products">
+            <div [style.background-color]="product.onSale == true ? 'green' : 'red' " class="text-center">
+                <img [src]=product.imagePath class="w-100" alt="{{product.name}}">
+                <h3>{{product.name}}</h3>
+                <h4>{{product.price}}</h4>
+            </div>
+        </div>
+    </div>   
+</div>
+
+
+<!-- ng class -->
+<section class="test p-4 border bg-warning">
+    <h4 [ngClass]="{'bg-info':price>1000,'text-center':onSale==true}">Hello Hamada from ng class</h4>
+
+</section>
+
+<!-- ng style -->
+
+<section class="sample p-4 border bg-warning">
+    <h4 [ngStyle]="{'background-color':price>1000 ? 'green' :'red' , 'color':onSale==true ? 'black' : '#09c'}">Hello Hambozo from ng style</h4>
+
+</section>

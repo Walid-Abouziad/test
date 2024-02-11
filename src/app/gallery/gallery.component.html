@@ -1,0 +1,21 @@
+<section class="gallery p-4 border bg-light">
+    <h2>Hello Gallery Component</h2>
+    <button class="btn btn-danger">Click Me</button>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <ul>
+                    <li><a routerLink="web">Web</a></li>
+                    <li><a routerLink="mobile">Mobile</a></li>
+                </ul>
+            </div>
+            <div class="col-md-10">
+                <router-outlet></router-outlet>
+            </div>
+
+        </div>
+    </div>
+    
+</section>
